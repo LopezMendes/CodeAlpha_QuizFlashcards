@@ -1,0 +1,801 @@
+/* =========================================
+   QUIZFLASH - DESIGN PROFESSIONNEL
+   ========================================= */
+
+/* ===== RESET ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ===== VARIABLES ===== */
+
+:root {
+    --background: #0f172a;
+    --surface: #1e293b;
+    --surface-light: #263449;
+
+    --primary: #8b5cf6;
+    --primary-dark: #7c3aed;
+
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+
+    --border: rgba(255, 255, 255, 0.08);
+
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ===== BODY ===== */
+
+body {
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(139, 92, 246, 0.18),
+            transparent 35%
+        ),
+        var(--background);
+
+    color: var(--text);
+    min-height: 100vh;
+}
+
+
+/* ===== HEADER ===== */
+
+.header {
+    text-align: center;
+    padding: 45px 20px 35px;
+}
+
+.header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+
+.header h1::first-letter {
+    color: var(--primary);
+}
+
+.header p {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+
+/* ===== CONTAINER ===== */
+
+.container {
+    width: 92%;
+    max-width: 900px;
+    margin: 0 auto 50px;
+}
+
+
+/* ===== FLASHCARD SECTION ===== */
+
+.flashcard-section {
+    text-align: center;
+}
+
+
+/* ===== FLASHCARD ===== */
+
+/* ==========================================
+   CARTE PRINCIPALE - QUIZFLASH
+========================================== */
+
+.flashcard {
+    position: relative;
+    min-height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 40px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(139, 92, 246, 0.15),
+            transparent 40%
+        ),
+        var(--surface);
+
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    overflow: hidden;
+}
+
+/* Petit effet lumineux dans la carte */
+
+.flashcard::before {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -90px;
+    right: -90px;
+
+    background: rgba(139, 92, 246, 0.12);
+    border-radius: 50%;
+
+    filter: blur(10px);
+}
+
+/* Zone question */
+
+.question-label {
+    position: relative;
+
+    margin-bottom: 20px;
+
+    color: var(--primary);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+/* Question */
+
+#question {
+    position: relative;
+
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    color: var(--text);
+
+    font-size: clamp(24px, 4vw, 34px);
+
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    text-align: center;
+}
+
+/* Réponse */
+
+#answer {
+    position: relative;
+
+    width: 100%;
+    max-width: 800px;
+
+    margin-top: 30px;
+
+    padding: 22px 26px;
+
+    background: rgba(139, 92, 246, 0.08);
+
+    border: 1px solid rgba(139, 92, 246, 0.20);
+
+    border-radius: 16px;
+
+    text-align: center;
+}
+
+#answerText {
+    color: var(--text-muted);
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* Lumière décorative */
+
+.flashcard::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    background: rgba(139, 92, 246, 0.18);
+
+    filter: blur(70px);
+
+    top: -80px;
+    right: -60px;
+}
+
+
+/* ===== CARD CONTENT ===== */
+
+.card-content {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ===== LABEL ===== */
+
+.card-label {
+    display: inline-block;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    color: var(--primary);
+
+    margin-bottom: 18px;
+}
+
+
+/* ===== QUESTION ===== */
+
+#question {
+    font-size: 30px;
+    line-height: 1.4;
+
+    max-width: 750px;
+
+    margin: 0 auto 28px;
+}
+
+
+/* ===== ANSWER ===== */
+
+.answer {
+    border-top: 1px solid var(--border);
+
+    padding-top: 25px;
+
+    animation: fadeIn 0.3s ease;
+}
+
+#answerText {
+    color: var(--text-muted);
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ===== BUTTONS ===== */
+
+.btn {
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 13px 20px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.btn:active {
+    transform: translateY(0);
+}
+
+
+/* ===== PRIMARY ===== */
+
+.primary {
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+
+    color: white;
+
+    box-shadow:
+        0 10px 25px rgba(139, 92, 246, 0.25);
+}
+
+
+.primary:hover {
+    box-shadow:
+        0 14px 30px rgba(139, 92, 246, 0.35);
+}
+
+
+/* ===== SECONDARY ===== */
+
+.secondary {
+    background: var(--surface-light);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+}
+
+
+/* ===== ADD ===== */
+
+.add {
+    background: var(--success);
+
+    color: white;
+}
+
+
+/* ===== EDIT ===== */
+
+.edit {
+    background: var(--warning);
+
+    color: #111827;
+}
+
+
+/* ===== DELETE ===== */
+
+.delete {
+    background: var(--danger);
+
+    color: white;
+}
+
+
+/* ===== NAVIGATION ===== */
+
+.navigation {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    margin-top: 25px;
+}
+
+
+#cardCounter {
+    min-width: 60px;
+
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+/* ===== MANAGEMENT ===== */
+
+.management {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.07),
+            rgba(255, 255, 255, 0.03)
+        );
+
+    border: 1px solid var(--border);
+
+    margin-top: 45px;
+
+    padding: 35px;
+
+    border-radius: 24px;
+
+    box-shadow: var(--shadow);
+
+    text-align: center;
+}
+
+
+.management h2 {
+    font-size: 22px;
+
+    margin-bottom: 25px;
+}
+
+
+/* ===== FORM ===== */
+
+.form-container {
+    margin-top: 25px;
+
+    animation: fadeIn 0.3s ease;
+}
+
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-bottom: 15px;
+
+    background: #0f172a;
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    font-size: 15px;
+
+    font-family: inherit;
+
+    outline: none;
+}
+
+
+.form-container input:focus,
+.form-container textarea:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(139, 92, 246, 0.12);
+}
+
+
+.form-container textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+
+.form-container input::placeholder,
+.form-container textarea::placeholder {
+    color: #64748b;
+}
+
+
+/* ===== FORM BUTTONS ===== */
+
+.form-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+/* ===== ACTIONS ===== */
+
+.actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+
+/* ===== HIDDEN ===== */
+
+.hidden {
+    display: none;
+}
+
+
+/* ===== FOOTER ===== */
+
+footer {
+    text-align: center;
+
+    padding: 35px 20px;
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+}
+
+
+/* ===== RESPONSIVE MOBILE ===== */
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 35px 15px 25px;
+    }
+
+
+    .header h1 {
+        font-size: 32px;
+    }
+
+
+    .header p {
+        font-size: 14px;
+    }
+
+
+    .container {
+        width: 94%;
+    }
+
+
+    .flashcard {
+        min-height: 300px;
+
+        padding: 40px 20px;
+
+        border-radius: 22px;
+    }
+
+
+    #question {
+        font-size: 23px;
+    }
+
+
+    #answerText {
+        font-size: 16px;
+    }
+
+
+    .navigation {
+        gap: 8px;
+    }
+
+
+    .navigation .btn {
+        padding: 11px 13px;
+
+        font-size: 13px;
+    }
+
+
+    .management {
+        padding: 25px 18px;
+    }
+
+
+    .actions {
+        flex-direction: column;
+    }
+
+
+    .actions .btn {
+        width: 100%;
+    }
+
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+
+    .form-buttons .btn {
+        width: 100%;
+    }
+}
+
+/* ==========================================
+   NOTIFICATIONS TOAST
+========================================== */
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--surface-light);
+    color: var(--text);
+    padding: 15px 22px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    font-size: 15px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.success {
+    border-left: 4px solid var(--success);
+}
+
+.toast.error {
+    border-left: 4px solid var(--danger);
+}
+
+@media (max-width: 600px) {
+    .toast {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        text-align: center;
+    }
+}
+
+/* ==========================================
+   ANIMATION DES FICHES
+========================================== */
+
+.card-animate {
+    animation: cardSlide 0.4s ease;
+}
+
+@keyframes cardSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation du compteur */
+#cardCounter {
+    min-width: 65px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+    background: rgba(139, 92, 246, 0.10);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    padding: 8px 14px;
+    border-radius: 20px;
+}
+
+/* ==========================================
+   RESPONSIVE MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .flashcard {
+        min-height: 280px;
+        padding: 35px 20px;
+        border-radius: 22px;
+    }
+
+    #question {
+        font-size: 24px;
+    }
+
+    #answer {
+        padding: 18px;
+    }
+
+    #answerText {
+        font-size: 15px;
+    }
+
+    .question-label {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+}
+
+/* ==========================================
+   BARRE DE PROGRESSION
+========================================== */
+
+.progress-section {
+    width: 100%;
+    max-width: 600px;
+    margin: 28px auto 35px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#progressText {
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#progressFill {
+    width: 0%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        var(--primary-dark),
+        var(--primary)
+    );
+
+    border-radius: 20px;
+
+    transition: width 0.4s ease;
+}
+
+@media (max-width: 600px) {
+    .progress-section {
+        width: 90%;
+        margin: 25px auto 30px;
+    }
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizFlash - Flashcards</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>📚 QuizFlash</h1>
+        <p>Révise intelligemment avec tes fiches</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Zone de la fiche -->
+        <section class="flashcard-section">
+
+            <div class="flashcard" id="flashcard">
+
+                <div class="card-content">
+
+                    <span class="card-label">QUESTION</span>
+
+                    <h2 id="question">
+                        Bienvenue sur QuizFlash !
+                    </h2>
+
+                    <div id="answer" class="answer hidden">
+                        <span class="card-label">RÉPONSE</span>
+                        <p id="answerText">
+                            Clique sur « Afficher la réponse » pour commencer.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Bouton réponse -->
+            <button id="showAnswerBtn" class="btn primary">
+                👁️ Afficher la réponse
+            </button>
+
+            <!-- Navigation -->
+            <div class="navigation">
+                <button id="prevBtn" class="btn secondary">
+                    ← Précédent
+                </button>
+
+                <span id="cardCounter">1 / 1</span>
+
+                <button id="nextBtn" class="btn secondary">
+                    Suivant →
+                </button>
+            </div>
+            
+            <!-- Progression -->
+            <div class="progress-section">
+                <div class="progress-info">
+                    <span>📚 Progression</span>
+                    <span id="progressText">0%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gestion des fiches -->
+        <section class="management">
+
+            <h2>⚙️ Gérer mes fiches</h2>
+
+            <button id="addBtn" class="btn add">
+                ＋ Ajouter une fiche
+            </button>
+
+            <div id="formContainer" class="form-container hidden">
+
+                <input
+                    type="text"
+                    id="questionInput"
+                    placeholder="Écris ta question..."
+                >
+
+                <textarea
+                    id="answerInput"
+                    placeholder="Écris la réponse..."
+                ></textarea>
+
+                <div class="form-buttons">
+                    <button id="saveBtn" class="btn primary">
+                        💾 Enregistrer
+                    </button>
+
+                    <button id="cancelBtn" class="btn secondary">
+                        Annuler
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="actions">
+                <button id="editBtn" class="btn edit">
+                    ✏️ Modifier
+                </button>
+
+                <button id="deleteBtn" class="btn delete">
+                    🗑️ Supprimer
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>QuizFlash — Projet CodeAlpha 🚀</p>
+    </footer>
+
+    <!-- Notification -->
+<div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
